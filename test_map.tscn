@@ -1,0 +1,143 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://map/hall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://map/storage_room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://map/dining_room.tscn" type="PackedScene" id=3]
+[ext_resource path="res://map/t_split.tscn" type="PackedScene" id=4]
+[ext_resource path="res://map/corner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://map/library.tscn" type="PackedScene" id=6]
+[ext_resource path="res://map/map.gd" type="Script" id=7]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui.gd" type="Script" id=9]
+[ext_resource path="res://enemy/enemy.png" type="Texture" id=10]
+[ext_resource path="res://enemy/enemy.gd" type="Script" id=11]
+[ext_resource path="res://enemy/485076__inspectorj__heartbeat-regular-single-01-01-loop.wav" type="AudioStream" id=12]
+
+[node name="Node" type="Node"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -512.0 ]
+}
+
+[node name="World" type="Node2D" parent="."]
+scale = Vector2( 64, 64 )
+
+[node name="Test map" type="TileMap" parent="World"]
+format = 1
+script = ExtResource( 7 )
+
+[node name="Dining room" parent="World/Test map" instance=ExtResource( 3 )]
+position = Vector2( 6, 0 )
+
+[node name="Hall" parent="World/Test map" instance=ExtResource( 1 )]
+position = Vector2( 9, 7 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="Hall3" parent="World/Test map" instance=ExtResource( 1 )]
+position = Vector2( 14, 0 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="T Split" parent="World/Test map" instance=ExtResource( 4 )]
+position = Vector2( 9, 10 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="Storage room" parent="World/Test map" instance=ExtResource( 2 )]
+position = Vector2( 4, 9 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="Library" parent="World/Test map" instance=ExtResource( 6 )]
+position = Vector2( 6, -8 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="Corner" parent="World/Test map" instance=ExtResource( 5 )]
+position = Vector2( 14, 2 )
+scale = Vector2( 0.0625, 0.0625 )
+
+[node name="Player" parent="World" instance=ExtResource( 8 )]
+position = Vector2( 10, 3 )
+map_path = NodePath("../../World/Test map")
+
+[node name="Enemy" type="Sprite" parent="World"]
+position = Vector2( 9, -1 )
+scale = Vector2( 0.062, 0.062 )
+texture = ExtResource( 10 )
+offset = Vector2( 8, 8 )
+script = ExtResource( 11 )
+map_path = NodePath("../Test map")
+player_path = NodePath("../Player")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="World/Enemy"]
+stream = ExtResource( 12 )
+autoplay = true
+max_distance = 512.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 9 )
+player_path = NodePath("../World/Player")
+chest_inventory_path = NodePath("Chest inventory")
+self_inventory_path = NodePath("Self inventory")
+move_left_button_path = NodePath("Actions/Left")
+move_right_button_path = NodePath("Actions/Right")
+move_up_button_path = NodePath("Actions/Up")
+move_down_button_path = NodePath("Actions/Down")
+
+[node name="Self inventory" type="HBoxContainer" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="VBoxContainer" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 200.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="Button" parent="UI/Actions"]
+margin_right = 200.0
+margin_bottom = 20.0
+text = "Move up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Button" parent="UI/Actions"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 44.0
+text = "Move down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="UI/Actions"]
+margin_top = 48.0
+margin_right = 200.0
+margin_bottom = 68.0
+text = "Move left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="UI/Actions"]
+margin_top = 72.0
+margin_right = 200.0
+margin_bottom = 92.0
+text = "Move right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chest inventory" type="HBoxContainer" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

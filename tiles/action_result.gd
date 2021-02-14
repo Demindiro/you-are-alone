@@ -1,0 +1,1 @@
+class_name GWJ30_TileActionResult

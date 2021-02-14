@@ -1,0 +1,138 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "GWJ30_Enemy",
+"language": "GDScript",
+"path": "res://enemy/enemy.gd"
+}, {
+"base": "Reference",
+"class": "GWJ30_EnemyState",
+"language": "GDScript",
+"path": "res://enemy/state/state.gd"
+}, {
+"base": "Reference",
+"class": "GWJ30_EnemyState_Follow",
+"language": "GDScript",
+"path": "res://enemy/state/follow.gd"
+}, {
+"base": "GWJ30_EnemyState",
+"class": "GWJ30_EnemyState_Idle",
+"language": "GDScript",
+"path": "res://enemy/state/idle.gd"
+}, {
+"base": "GWJ30_EnemyState",
+"class": "GWJ30_EnemyState_Wander",
+"language": "GDScript",
+"path": "res://enemy/state/wander.gd"
+}, {
+"base": "Node2D",
+"class": "GWJ30_Map",
+"language": "GDScript",
+"path": "res://map/map.gd"
+}, {
+"base": "Sprite",
+"class": "GWJ30_Player",
+"language": "GDScript",
+"path": "res://player/player.gd"
+}, {
+"base": "TileMap",
+"class": "GWJ30_Room",
+"language": "GDScript",
+"path": "res://map/room.gd"
+}, {
+"base": "Reference",
+"class": "GWJ30_TileAction",
+"language": "GDScript",
+"path": "res://tiles/action.gd"
+}, {
+"base": "Reference",
+"class": "GWJ30_TileActionList",
+"language": "GDScript",
+"path": "res://tiles/tile_action_list.gd"
+}, {
+"base": "Reference",
+"class": "GWJ30_TileActionResult",
+"language": "GDScript",
+"path": "res://tiles/action_result.gd"
+}, {
+"base": "GWJ30_TileActionResult",
+"class": "GWJ30_TileActionResult_Inventory",
+"language": "GDScript",
+"path": "res://tiles/action_result_inventory.gd"
+}, {
+"base": "GWJ30_TileActionResult",
+"class": "GWJ30_TileActionResult_None",
+"language": "GDScript",
+"path": "res://tiles/action_result_none.gd"
+}, {
+"base": "GWJ30_TileAction_Inventory",
+"class": "GWJ30_TileAction_Chest",
+"language": "GDScript",
+"path": "res://tiles/chest/action.gd"
+}, {
+"base": "GWJ30_TileAction",
+"class": "GWJ30_TileAction_Floor",
+"language": "GDScript",
+"path": "res://tiles/floor/action.gd"
+}, {
+"base": "GWJ30_TileAction",
+"class": "GWJ30_TileAction_Inventory",
+"language": "GDScript",
+"path": "res://tiles/tile_action_inventory.gd"
+}, {
+"base": "GWJ30_TileAction_Inventory",
+"class": "GWJ30_TileAction_Table",
+"language": "GDScript",
+"path": "res://tiles/table/action.gd"
+}, {
+"base": "GWJ30_TileAction",
+"class": "GWJ30_TileAction_Wall",
+"language": "GDScript",
+"path": "res://tiles/wall/action.gd"
+} ]
+_global_script_class_icons={
+"GWJ30_Enemy": "",
+"GWJ30_EnemyState": "",
+"GWJ30_EnemyState_Follow": "",
+"GWJ30_EnemyState_Idle": "",
+"GWJ30_EnemyState_Wander": "",
+"GWJ30_Map": "",
+"GWJ30_Player": "",
+"GWJ30_Room": "",
+"GWJ30_TileAction": "",
+"GWJ30_TileActionList": "",
+"GWJ30_TileActionResult": "",
+"GWJ30_TileActionResult_Inventory": "",
+"GWJ30_TileActionResult_None": "",
+"GWJ30_TileAction_Chest": "",
+"GWJ30_TileAction_Floor": "",
+"GWJ30_TileAction_Inventory": "",
+"GWJ30_TileAction_Table": "",
+"GWJ30_TileAction_Wall": ""
+}
+
+[application]
+
+config/name="gwj30"
+config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/player.png" type="Texture" id=1]
+[ext_resource path="res://player/player.gd" type="Script" id=2]
+
+[node name="Player" type="Sprite"]
+scale = Vector2( 0.062, 0.062 )
+texture = ExtResource( 1 )
+offset = Vector2( 8, 8 )
+script = ExtResource( 2 )
+map_path = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 8, 8 )
+current = true
+smoothing_enabled = true
