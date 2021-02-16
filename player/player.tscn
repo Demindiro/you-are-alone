@@ -1,16 +1,76 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 
-[node name="Player" type="Sprite"]
-scale = Vector2( 0.062, 0.062 )
-texture = ExtResource( 1 )
-offset = Vector2( 8, 8 )
-script = ExtResource( 2 )
-map_path = null
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
 
-[node name="Camera2D" type="Camera2D" parent="."]
+uniform float shadow_radius = 1.0;
+
+void fragment() {
+	vec2 uv = abs(UV - vec2(0.5)) * 2.0;
+	COLOR.rgb = vec3(0.0);
+	COLOR.a = clamp(length(uv) / shadow_radius, 0.0, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/shadow_radius = 1.0
+
+[sub_resource type="QuadMesh" id=3]
+size = Vector2( 48, 48 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR.rgb = vec3(0.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[sub_resource type="QuadMesh" id=6]
+size = Vector2( 2048, 2048 )
+
+[node name="Player" type="Node2D"]
+scale = Vector2( 0.062, 0.062 )
+script = ExtResource( 2 )
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Visual"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Center shadow" type="MeshInstance2D" parent="Visual"]
+material = SubResource( 2 )
+position = Vector2( 8, 8 )
+mesh = SubResource( 3 )
+
+[node name="Cover left" type="MeshInstance2D" parent="Visual"]
+material = SubResource( 5 )
+position = Vector2( -1040, -992 )
+mesh = SubResource( 6 )
+
+[node name="Cover up" type="MeshInstance2D" parent="Visual"]
+material = SubResource( 5 )
+position = Vector2( 1000, -1040 )
+mesh = SubResource( 6 )
+
+[node name="Cover right" type="MeshInstance2D" parent="Visual"]
+material = SubResource( 5 )
+position = Vector2( 1056, 992 )
+mesh = SubResource( 6 )
+
+[node name="Cover down" type="MeshInstance2D" parent="Visual"]
+material = SubResource( 5 )
+position = Vector2( -992, 1056 )
+mesh = SubResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="Visual"]
 position = Vector2( 8, 8 )
 current = true
 smoothing_enabled = true

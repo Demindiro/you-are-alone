@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 class_name GWJ30_Player
 
 
@@ -13,9 +13,26 @@ export var map_path := NodePath()
 #onready var map: GWJ30_Map = get_node(map_path)
 onready var map = get_node(map_path)
 
+onready var _visual: Node2D = get_node("Visual")
+onready var _shadow: MeshInstance2D = get_node("Visual/Center shadow")
 
 var items := [null, null, null]
 var open_inventory_items := []
+
+var _interpolation_fraction := 0.0
+var _old_position := Vector2()
+
+
+func _ready() -> void:
+	_visual.set_as_toplevel(true)
+	_visual.scale = Vector2(4, 4)
+	_visual.position = global_position
+	_old_position = global_position
+
+
+func _process(delta: float) -> void:
+	_interpolation_fraction = min(1.0, _interpolation_fraction + delta * 5.0)
+	_visual.position = _old_position.linear_interpolate(global_position, ease(_interpolation_fraction, -1.75))
 
 
 func move_left() -> void:
@@ -49,9 +66,11 @@ func put_item(item) -> void:
 
 
 func _move(direction: Vector2) -> void:
+	_old_position = global_position
 	var result: GWJ30_TileActionResult = map.do_action(self, direction)
 	if result == null:
 		return
+	_interpolation_fraction = 0.0
 	emit_signal("move")
 	if result is GWJ30_TileActionResult_None:
 		pass

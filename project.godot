@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
+"base": "Sprite",
 "class": "GWJ30_Enemy",
 "language": "GDScript",
 "path": "res://enemy/enemy.gd"
@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemy/state/state.gd"
 }, {
-"base": "Reference",
+"base": "GWJ30_EnemyState",
 "class": "GWJ30_EnemyState_Follow",
 "language": "GDScript",
 "path": "res://enemy/state/follow.gd"
@@ -34,12 +34,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://enemy/state/wander.gd"
 }, {
-"base": "Node2D",
+"base": "TileMap",
 "class": "GWJ30_Map",
 "language": "GDScript",
 "path": "res://map/map.gd"
 }, {
-"base": "Sprite",
+"base": "Node2D",
 "class": "GWJ30_Player",
 "language": "GDScript",
 "path": "res://player/player.gd"
