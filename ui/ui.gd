@@ -17,6 +17,9 @@ onready var move_right_button: BaseButton = get_node(move_right_button_path)
 onready var move_up_button: BaseButton = get_node(move_up_button_path)
 onready var move_down_button: BaseButton = get_node(move_down_button_path)
 
+export var light_candle_button_path := NodePath()
+onready var light_candle_button: BaseButton = get_node(light_candle_button_path)
+
 
 func _ready() -> void:
 	var e := player.connect("move", self, "move")
@@ -34,6 +37,8 @@ func _ready() -> void:
 	e = move_up_button.connect("pressed", player, "move_up")
 	assert(e == OK)
 	e = move_down_button.connect("pressed", player, "move_down")
+	assert(e == OK)
+	e = light_candle_button.connect("pressed", player, "light_candle")
 	assert(e == OK)
 	_refresh_inventory()
 
@@ -85,6 +90,7 @@ func _refresh_inventory() -> void:
 		var err := btn.connect("pressed", self, "take_item", [e])
 		assert(err == OK)
 		chest_inventory.add_child(btn)
+	_refresh_light_candle_button()
 
 
 func _refresh_actions() -> void:
@@ -102,6 +108,12 @@ func _refresh_actions() -> void:
 		b.disabled = a.name == ""
 		if b.disabled:
 			b.call_deferred("release_focus")
+	_refresh_light_candle_button()
+
+
+func _refresh_light_candle_button() -> void:
+	light_candle_button.disabled = player.illuminated >= player.REILLUMINATE_THRESHOLD or \
+			not "Candle" in player.items
 
 
 static func clear_children(node: Node) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://map/hall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://map/storage_room.tscn" type="PackedScene" id=2]
@@ -17,6 +17,11 @@
 [ext_resource path="res://ui/arrow_down-x3.png" type="Texture" id=15]
 [ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=16]
 [ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=17]
+[ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 18 )
 
 [node name="Node" type="Node"]
 __meta__ = {
@@ -84,6 +89,7 @@ move_left_button_path = NodePath("Actions/Left")
 move_right_button_path = NodePath("Actions/Right")
 move_up_button_path = NodePath("Actions/Up")
 move_down_button_path = NodePath("Actions/Down")
+light_candle_button_path = NodePath("Light candle")
 
 [node name="Self inventory" type="HBoxContainer" parent="UI"]
 anchor_left = 1.0
@@ -178,4 +184,23 @@ grow_vertical = 0
 theme = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": true
+}
+
+[node name="Light candle" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -427.477
+margin_top = -58.8408
+margin_right = -324.0
+margin_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource( 13 )
+custom_fonts/font = SubResource( 1 )
+text = "Light   Candle"
+__meta__ = {
+"_edit_use_anchors_": false
 }
