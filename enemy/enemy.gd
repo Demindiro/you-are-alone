@@ -18,7 +18,8 @@ func _ready() -> void:
 
 func move() -> void:
 	# Make sure we don't get near the player if he has a candle
-	if player.illuminated and player.position.distance_squared_to(position) < 1.5 * 1.5:
+	# Use 1.51 instead of 1.5 to compensate for FP precision
+	if player.illuminated and player.position.distance_squared_to(position) < 1.51 * 1.51:
 		state = GWJ30_EnemyState_Teleport.new().advance(map, player, self)
 	else:
 		# Only advance once every 3 "ticks" so the player can always outrun
