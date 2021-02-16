@@ -18,6 +18,7 @@ onready var _shadow: MeshInstance2D = get_node("Visual/Center shadow")
 
 var items := [null, null, null]
 var open_inventory_items := []
+var illuminated := true
 
 var _interpolation_fraction := 0.0
 var _old_position := Vector2()

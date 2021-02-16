@@ -17,10 +17,14 @@ func _ready() -> void:
 
 
 func move() -> void:
-	# Only advance once every 3 "ticks" so the player can always outrun
-	# the enemy
-	move_counter += 1
-	move_counter %= 3
-	if move_counter == 0:
-		state = state.advance(map, player, self)
-		assert(state != null, "State may not be null!")
+	# Make sure we don't get near the player if he has a candle
+	if player.illuminated and player.position.distance_squared_to(position) < 1.5 * 1.5:
+		state = GWJ30_EnemyState_Teleport.new().advance(map, player, self)
+	else:
+		# Only advance once every 3 "ticks" so the player can always outrun
+		# the enemy
+		move_counter += 1
+		move_counter %= 3
+		if move_counter == 0:
+			state = state.advance(map, player, self)
+			assert(state != null, "State may not be null!")

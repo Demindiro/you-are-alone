@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://enemy/state/idle.gd"
 }, {
 "base": "GWJ30_EnemyState",
+"class": "GWJ30_EnemyState_Teleport",
+"language": "GDScript",
+"path": "res://enemy/state/teleport.gd"
+}, {
+"base": "GWJ30_EnemyState",
 "class": "GWJ30_EnemyState_Wander",
 "language": "GDScript",
 "path": "res://enemy/state/wander.gd"
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "GWJ30_EnemyState": "",
 "GWJ30_EnemyState_Follow": "",
 "GWJ30_EnemyState_Idle": "",
+"GWJ30_EnemyState_Teleport": "",
 "GWJ30_EnemyState_Wander": "",
 "GWJ30_Map": "",
 "GWJ30_Player": "",
