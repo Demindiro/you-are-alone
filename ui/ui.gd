@@ -71,6 +71,7 @@ func _refresh_inventory() -> void:
 		if e == null:
 			e = ""
 		var btn := Button.new()
+		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
 		var err := btn.connect("pressed", self, "put_item", [e])
 		assert(err == OK)
@@ -79,6 +80,7 @@ func _refresh_inventory() -> void:
 		if e == null:
 			e = ""
 		var btn := Button.new()
+		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
 		var err := btn.connect("pressed", self, "take_item", [e])
 		assert(err == OK)
@@ -87,23 +89,19 @@ func _refresh_inventory() -> void:
 
 func _refresh_actions() -> void:
 	var actions: GWJ30_TileActionList = player.map.get_actions(player)
-	move_left_button.text = actions.left.name
-	move_right_button.text = actions.right.name
-	move_up_button.text = actions.up.name
-	move_down_button.text = actions.down.name
-	move_left_button.disabled = actions.left.name == ""
-	move_right_button.disabled = actions.right.name == ""
-	move_up_button.disabled = actions.up.name == ""
-	move_down_button.disabled = actions.down.name == ""
-	# TODO this is a shitty hack
-	if actions.left.name == "Move":
-		move_left_button.text += " left"
-	if actions.right.name == "Move":
-		move_right_button.text += " right"
-	if actions.up.name == "Move":
-		move_up_button.text += " up"
-	if actions.down.name == "Move":
-		move_down_button.text += " down"
+	var btn_act := [
+		[move_left_button, actions.left],
+		[move_right_button, actions.right],
+		[move_up_button, actions.up],
+		[move_down_button, actions.down],
+	]
+	for ba in btn_act:
+		var b: Button = ba[0]
+		var a: GWJ30_TileAction = ba[1]
+		b.text = a.name
+		b.disabled = a.name == ""
+		if b.disabled:
+			b.call_deferred("release_focus")
 
 
 static func clear_children(node: Node) -> void:
