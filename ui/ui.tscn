@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/arrow_up-x3.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=6]
 [ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=7]
+[ext_resource path="res://ui/game_over.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -22,6 +23,7 @@ move_right_button_path = NodePath("Actions/Right")
 move_up_button_path = NodePath("Actions/Up")
 move_down_button_path = NodePath("Actions/Down")
 light_candle_button_path = NodePath("Light candle")
+game_over_path = NodePath("Game over")
 
 [node name="Self inventory" type="HBoxContainer" parent="."]
 anchor_left = 1.0
@@ -135,3 +137,7 @@ text = "Light   Candle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Game over" parent="." instance=ExtResource( 8 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.190799 )

@@ -7,6 +7,7 @@ signal open_inventory()
 signal took_item(item)
 # I'm well aware the past tense of "put" is "put", but I can't have that
 signal putted_item(item)
+signal killed
 
 
 const REILLUMINATE_THRESHOLD := 30
@@ -80,6 +81,10 @@ func light_candle() -> void:
 		illuminated = 100
 		_update_shadow()
 		emit_signal("took_item", "Candle")
+
+
+func kill() -> void:
+	emit_signal("killed")
 
 
 func _move(direction: Vector2) -> void:

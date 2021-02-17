@@ -25,7 +25,8 @@ const TILES := {
 	preload("library/library.tres"): 0.25,
 	#preload("fountain/fountain.tres"): 0.5
 }
-const TILES_PER_MAP := 256
+#const TILES_PER_MAP := 256
+const TILES_PER_MAP := 32
 
 var _tiles := []
 var _tile_table := []

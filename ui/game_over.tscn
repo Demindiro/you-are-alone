@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/game_over.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[node name="Game over" type="ColorRect"]
+modulate = Color( 1, 1, 1, 0.0335938 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="CenterContainer" parent="."]
+margin_left = 449.0
+margin_top = 194.0
+margin_right = 575.0
+margin_bottom = 406.0
+
+[node name="Box" type="VBoxContainer" parent="Box"]
+margin_right = 126.0
+margin_bottom = 212.0
+
+[node name="Label" type="Label" parent="Box/Box"]
+margin_right = 126.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 2 )
+text = "You died"
+align = 1
+
+[node name="Try again" type="Button" parent="Box/Box"]
+margin_top = 88.0
+margin_right = 126.0
+margin_bottom = 148.0
+focus_mode = 0
+shortcut_in_tooltip = false
+text = "Try   again"
+
+[node name="Exit" type="Button" parent="Box/Box"]
+margin_top = 152.0
+margin_right = 126.0
+margin_bottom = 212.0
+focus_mode = 0
+shortcut_in_tooltip = false
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fade_in = SubResource( 3 )
+[connection signal="visibility_changed" from="." to="AnimationPlayer" method="play" binds= [ "fade_in" ]]
+[connection signal="pressed" from="Box/Box/Try again" to="." method="restart"]
+[connection signal="pressed" from="Box/Box/Exit" to="." method="exit"]

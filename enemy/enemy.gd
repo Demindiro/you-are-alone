@@ -4,8 +4,12 @@ class_name GWJ30_Enemy
 
 export var map_path := NodePath()
 export var player_path := NodePath()
+export var heartbeat_sound_path := NodePath()
+export var kill_sound_path := NodePath()
 onready var map: GWJ30_Map = get_node_or_null(map_path)
 onready var player: GWJ30_Player = get_node(player_path)
+onready var heartbeat_sound: AudioStreamPlayer2D = get_node(heartbeat_sound_path)
+onready var kill_sound: AudioStreamPlayer2D = get_node(kill_sound_path)
 
 var state: GWJ30_EnemyState = GWJ30_EnemyState_Teleport.new()
 var move_counter := 0
@@ -21,7 +25,7 @@ func _post_ready() -> void:
 	# Move once already (teleport in this case)
 	state = state.advance(map, player, self)
 	# Start playing audio now to prevent the player from hearing one beat
-	get_node("Audio").play()
+	heartbeat_sound.play()
 
 
 func move() -> void:
@@ -29,6 +33,11 @@ func move() -> void:
 	# Use 1.51 instead of 1.5 to compensate for FP precision
 	if player.illuminated and player.position.distance_squared_to(position) < 1.51 * 1.51:
 		state = GWJ30_EnemyState_Teleport.new().advance(map, player, self)
+	elif player.position == position:
+		# using == is fine, it is exact
+		player.kill()
+		kill_sound.play()
+		heartbeat_sound.stop()
 	else:
 		# Only advance once every 2 "ticks" so the player can always outrun
 		# the enemy

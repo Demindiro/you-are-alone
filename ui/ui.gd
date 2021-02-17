@@ -20,6 +20,9 @@ onready var move_down_button: BaseButton = get_node(move_down_button_path)
 export var light_candle_button_path := NodePath()
 onready var light_candle_button: BaseButton = get_node(light_candle_button_path)
 
+export var game_over_path := NodePath()
+onready var game_over: Control = get_node(game_over_path)
+
 
 func _ready() -> void:
 	var e := player.connect("move", self, "move")
@@ -68,6 +71,10 @@ func take_item(item):
 
 func put_item(item):
 	player.put_item(item)
+
+
+func game_over() -> void:
+	game_over.visible = true
 
 
 func _refresh_inventory() -> void:
