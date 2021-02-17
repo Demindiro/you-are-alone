@@ -3,7 +3,7 @@ class_name GWJ30_EnemyState_Wander
 
 var path := PoolVector2Array()
 
-func advance(map: GWJ30_Map, player: GWJ30_Player, enemy) -> GWJ30_EnemyState:
+func advance(map: GWJ30_Map, _player: GWJ30_Player, enemy) -> GWJ30_EnemyState:
 	var c := randf()
 	if c < 0.05:
 		return load("res://enemy/state/idle.gd").new()

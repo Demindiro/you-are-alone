@@ -10,4 +10,6 @@ func advance(_map: GWJ30_Map, _player: GWJ30_Player, _enemy) -> GWJ30_EnemyState
 		return GWJ30_EnemyState_Wander.new()
 	elif c < 0.10:
 		return GWJ30_EnemyState_Teleport.new()
+	elif c < 0.14:
+		return GWJ30_EnemyState_Attack.new()
 	return self

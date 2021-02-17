@@ -29,15 +29,11 @@ func _post_ready() -> void:
 
 
 func move() -> void:
+	_check_kill()
 	# Make sure we don't get near the player if he has a candle
 	# Use 1.51 instead of 1.5 to compensate for FP precision
 	if player.illuminated and player.position.distance_squared_to(position) < 1.51 * 1.51:
 		state = GWJ30_EnemyState_Teleport.new().advance(map, player, self)
-	elif player.position == position:
-		# using == is fine, it is exact
-		player.kill()
-		kill_sound.play()
-		heartbeat_sound.stop()
 	else:
 		# Only advance once every 2 "ticks" so the player can always outrun
 		# the enemy
@@ -46,3 +42,12 @@ func move() -> void:
 		if move_counter == 0:
 			state = state.advance(map, player, self)
 			assert(state != null, "State may not be null!")
+	_check_kill()
+
+
+func _check_kill() -> void:
+	if player.position == position:
+		# using == is fine, it is exact
+		player.kill()
+		kill_sound.play()
+		heartbeat_sound.stop()
