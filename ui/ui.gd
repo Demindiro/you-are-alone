@@ -73,18 +73,20 @@ func _refresh_inventory() -> void:
 	clear_children(self_inventory)
 	clear_children(chest_inventory)
 	for e in player.items:
+		var btn := Button.new()
 		if e == null:
 			e = ""
-		var btn := Button.new()
+			btn.disabled = true
 		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
 		var err := btn.connect("pressed", self, "put_item", [e])
 		assert(err == OK)
 		self_inventory.add_child(btn)
 	for e in player.open_inventory_items:
+		var btn := Button.new()
 		if e == null:
 			e = ""
-		var btn := Button.new()
+			btn.disabled = true
 		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
 		var err := btn.connect("pressed", self, "take_item", [e])
