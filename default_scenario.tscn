@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://map/generate.gd" type="Script" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://default_scenario.gd" type="Script" id=3]
+[ext_resource path="res://enemy/enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
+
+[node name="Default scenario" type="Node"]
+script = ExtResource( 3 )
+player_path = NodePath("World/Player")
+enemy_path = NodePath("World/Enemy")
+
+[node name="World" type="Node2D" parent="."]
+scale = Vector2( 64, 64 )
+
+[node name="Map generator" type="Node" parent="World"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="World" instance=ExtResource( 2 )]
+
+[node name="Enemy" parent="World" instance=ExtResource( 4 )]
+z_index = 1000
+player_path = NodePath("../Player")
+
+[node name="UI" parent="." instance=ExtResource( 5 )]
+chest_inventory_path = NodePath("../../Default scenario/UI/Chest inventory")
+self_inventory_path = NodePath("../../Default scenario/UI/Self inventory")
+move_left_button_path = NodePath("../../Default scenario/UI/Actions/Left")
+move_right_button_path = NodePath("../../Default scenario/UI/Actions/Right")
+move_up_button_path = NodePath("../../Default scenario/UI/Actions/Up")
+move_down_button_path = NodePath("../../Default scenario/UI/Actions/Down")
+light_candle_button_path = NodePath("../../Default scenario/UI/Light candle")
+[connection signal="done" from="World/Map generator" to="." method="set_map"]

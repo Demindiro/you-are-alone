@@ -46,26 +46,31 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Center shadow" type="MeshInstance2D" parent="Visual"]
+visible = false
 material = SubResource( 2 )
 position = Vector2( 8, 8 )
 mesh = SubResource( 3 )
 
 [node name="Cover left" type="MeshInstance2D" parent="Visual"]
+visible = false
 material = SubResource( 5 )
 position = Vector2( -1040, -992 )
 mesh = SubResource( 6 )
 
 [node name="Cover up" type="MeshInstance2D" parent="Visual"]
+visible = false
 material = SubResource( 5 )
 position = Vector2( 1000, -1040 )
 mesh = SubResource( 6 )
 
 [node name="Cover right" type="MeshInstance2D" parent="Visual"]
+visible = false
 material = SubResource( 5 )
 position = Vector2( 1056, 992 )
 mesh = SubResource( 6 )
 
 [node name="Cover down" type="MeshInstance2D" parent="Visual"]
+visible = false
 material = SubResource( 5 )
 position = Vector2( -992, 1056 )
 mesh = SubResource( 6 )

@@ -13,7 +13,7 @@ const REILLUMINATE_THRESHOLD := 30
 
 export var map_path := NodePath()
 #onready var map: GWJ30_Map = get_node(map_path)
-onready var map = get_node(map_path)
+onready var map = get_node_or_null(map_path)
 
 onready var _visual: Node2D = get_node("Visual")
 onready var _shadow: MeshInstance2D = get_node("Visual/Center shadow")
@@ -29,14 +29,19 @@ var _old_position := Vector2()
 func _ready() -> void:
 	_visual.set_as_toplevel(true)
 	_visual.scale = Vector2(4, 4)
-	_visual.position = global_position
-	_old_position = global_position
+	teleport(position)
 	_update_shadow()
 
 
 func _process(delta: float) -> void:
 	_interpolation_fraction = min(1.0, _interpolation_fraction + delta * 5.0)
 	_visual.position = _old_position.linear_interpolate(global_position, ease(_interpolation_fraction, -1.75))
+
+
+func teleport(p_position: Vector2) -> void:
+	position = p_position
+	_visual.position = global_position
+	_old_position = global_position
 
 
 func move_left() -> void:

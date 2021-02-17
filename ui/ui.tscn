@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/arrow_up-x3.png" type="Texture" id=2]
+[ext_resource path="res://ui/ui.gd" type="Script" id=3]
+[ext_resource path="res://ui/arrow_down-x3.png" type="Texture" id=4]
+[ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=6]
+[ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 5 )
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 3 )
+player_path = NodePath("../World/Player")
+chest_inventory_path = NodePath("Chest inventory")
+self_inventory_path = NodePath("Self inventory")
+move_left_button_path = NodePath("Actions/Left")
+move_right_button_path = NodePath("Actions/Right")
+move_up_button_path = NodePath("Actions/Up")
+move_down_button_path = NodePath("Actions/Down")
+light_candle_button_path = NodePath("Light candle")
+
+[node name="Self inventory" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -20.0
+margin_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = 200.0
+margin_bottom = -20.0
+grow_vertical = 0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="Button" parent="Actions"]
+margin_right = 180.0
+margin_bottom = 60.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Move"
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Button" parent="Actions"]
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 124.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Move"
+icon = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="Actions"]
+margin_top = 128.0
+margin_right = 180.0
+margin_bottom = 188.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Move"
+icon = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="Actions"]
+margin_top = 192.0
+margin_right = 180.0
+margin_bottom = 252.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Move"
+icon = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chest inventory" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -20.0
+margin_bottom = -140.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Light candle" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -427.477
+margin_top = -58.8408
+margin_right = -324.0
+margin_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Light   Candle"
+__meta__ = {
+"_edit_use_anchors_": false
+}

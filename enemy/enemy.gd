@@ -4,16 +4,24 @@ class_name GWJ30_Enemy
 
 export var map_path := NodePath()
 export var player_path := NodePath()
-onready var map: GWJ30_Map = get_node(map_path)
+onready var map: GWJ30_Map = get_node_or_null(map_path)
 onready var player: GWJ30_Player = get_node(player_path)
 
-var state: GWJ30_EnemyState = GWJ30_EnemyState_Idle.new()
+var state: GWJ30_EnemyState = GWJ30_EnemyState_Teleport.new()
 var move_counter := 0
 
 
 func _ready() -> void:
 	# Deferred in case the player moves _after_
 	var e := player.connect("move", self, "call_deferred", ["move"])
+	call_deferred("_post_ready")
+
+
+func _post_ready() -> void:
+	# Move once already (teleport in this case)
+	state = state.advance(map, player, self)
+	# Start playing audio now to prevent the player from hearing one beat
+	get_node("Audio").play()
 
 
 func move() -> void:

@@ -41,6 +41,7 @@ func _ready() -> void:
 	e = light_candle_button.connect("pressed", player, "light_candle")
 	assert(e == OK)
 	_refresh_inventory()
+	call_deferred("_refresh_actions")
 
 
 func move() -> void:

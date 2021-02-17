@@ -25,7 +25,7 @@ const TILES := {
 	preload("library/library.tres"): 0.25,
 	#preload("fountain/fountain.tres"): 0.5
 }
-const TILES_PER_MAP := 512
+const TILES_PER_MAP := 256
 
 var _tiles := []
 var _tile_table := []
@@ -33,7 +33,7 @@ var _tile_table_sum := 0.0
 
 
 func _enter_tree() -> void:
-	randomize()
+	var time := OS.get_ticks_msec()
 	for res in TILES:
 		var c = TILES[res]
 		_tile_table_sum += c
@@ -80,9 +80,14 @@ func _enter_tree() -> void:
 			if do_break:
 				break
 
+	print("Generate time: ", OS.get_ticks_msec() - time, " ms")
+
 	add_child(map)
 	emit_signal("done", map)
 	set_script(null)
+	# TODO the below causes SIGSEGV, report this
+	# Presumably because of the set_script(null) thing above
+	#print("Generate time: ", OS.get_ticks_msec() - time, " ms")
 
 
 func _pop_random_tile(tiles: Array, tiles_sum: float) -> GWJ30_RoomResource:
