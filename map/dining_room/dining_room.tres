@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://map/room_resource.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Dining room"
+script = ExtResource( 1 )
+scene_path = "res://map/dining_room/dining_room.tscn"
+entrances = PoolVector2Array( 4, 0, 0, 3, 8, 3, 4, 6 )
+size = Rect2( 0, 0, 9, 7 )

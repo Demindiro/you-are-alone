@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://map/map.gd"
 }, {
+"base": "Node",
+"class": "GWJ30_MapGenerate",
+"language": "GDScript",
+"path": "res://map/generate.gd"
+}, {
 "base": "Node2D",
 "class": "GWJ30_Player",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "GWJ30_Room",
 "language": "GDScript",
 "path": "res://map/room.gd"
+}, {
+"base": "Resource",
+"class": "GWJ30_RoomResource",
+"language": "GDScript",
+"path": "res://map/room_resource.gd"
 }, {
 "base": "Reference",
 "class": "GWJ30_TileAction",
@@ -112,8 +122,10 @@ _global_script_class_icons={
 "GWJ30_EnemyState_Teleport": "",
 "GWJ30_EnemyState_Wander": "",
 "GWJ30_Map": "",
+"GWJ30_MapGenerate": "",
 "GWJ30_Player": "",
 "GWJ30_Room": "",
+"GWJ30_RoomResource": "",
 "GWJ30_TileAction": "",
 "GWJ30_TileActionList": "",
 "GWJ30_TileActionResult": "",

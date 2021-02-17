@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://map/room_resource.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Library"
+script = ExtResource( 1 )
+scene_path = "res://map/library/library.tscn"
+entrances = PoolVector2Array( 5, 0, 14, 3, 0, 5, 9, 8 )
+size = Rect2( 0, 0, 15, 9 )

@@ -4,6 +4,7 @@
 [ext_resource path="res://tiles/tileset.tres" type="TileSet" id=2]
 
 [node name="Fountain" type="TileMap"]
+scale = Vector2( 0.0625, 0.0625 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1

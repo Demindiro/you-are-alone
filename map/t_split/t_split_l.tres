@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://map/room_resource.gd" type="Script" id=1]
+
+[resource]
+resource_name = "T Split"
+script = ExtResource( 1 )
+scene_path = "res://map/t_split/t_split_l.tscn"
+entrances = PoolVector2Array( 1, 0, 0, 1, 1, 2 )
+size = Rect2( 0, 0, 3, 3 )

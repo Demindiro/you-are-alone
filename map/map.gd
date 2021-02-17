@@ -37,9 +37,13 @@ func _ready() -> void:
 				var map_pos := pos + room.position
 				# Vector2i pls
 				var key := PoolIntArray([map_pos.x, map_pos.y])
-				# Override floors with walls, otherwise just check and skip
-				if key in cells and not (cells[key] == 1 and cell == 0):
-					assert(cells[key] == cell, "Two different tiles share the same location!")
+				# TODO find a better way to ensure openings without punching holes in walls
+				if key in cells and cells[key] == 1 and cell == 0:
+					pass
+				#if key in cells and not (cells[key] == 1 and cell == 0):
+				elif key in cells and not (cells[key] == 0 and cell == 1):
+					# Override floors with walls, otherwise just check and skip
+					assert(cells[key] == cell, "Two different tiles share the same location! %d & %d" % [cells[key], cell])
 				else:
 					if cells.get(key, -1) == 1:
 						floor_tiles.erase(key)
