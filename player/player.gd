@@ -3,11 +3,13 @@ class_name GWJ30_Player
 
 
 signal move
-signal open_inventory()
+signal open_inventory
+signal open_puzzle
 signal took_item(item)
 # I'm well aware the past tense of "put" is "put", but I can't have that
 signal putted_item(item)
 signal killed
+signal escaped
 
 
 const REILLUMINATE_THRESHOLD := 30
@@ -21,6 +23,7 @@ onready var _shadow: MeshInstance2D = get_node("Visual/Center shadow")
 
 var items := [null, null, null]
 var open_inventory_items := []
+var puzzle#: GWJ30_Puzzle
 var illuminated := 0
 
 var _interpolation_fraction := 0.0
@@ -69,10 +72,16 @@ func take_item(item) -> void:
 
 
 func put_item(item) -> void:
-	if null in open_inventory_items and item in items:
-		open_inventory_items[open_inventory_items.find(null)] = item 
-		items[items.find(item)] = null
-		emit_signal("putted_item", item)
+	if item in items:
+		if len(open_inventory_items) > 0:
+			if null in open_inventory_items:
+				open_inventory_items[open_inventory_items.find(null)] = item 
+				items[items.find(item)] = null
+				emit_signal("putted_item", item)
+		elif puzzle != null:
+			if puzzle.put_item(item):
+				items[items.find(item)] = null
+				emit_signal("putted_item", item)
 
 
 func light_candle() -> void:
@@ -103,6 +112,11 @@ func _move(direction: Vector2) -> void:
 	elif result is GWJ30_TileActionResult_Inventory:
 		open_inventory_items = result.items
 		emit_signal("open_inventory")
+	elif result is GWJ30_TileActionResult_Puzzle:
+		puzzle = result
+		emit_signal("open_puzzle")
+	elif result is GWJ30_TileActionResult_Escaped:
+		emit_signal("escaped")
 	else:
 		assert(false, "Unhandled result type")
 

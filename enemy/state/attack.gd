@@ -10,8 +10,7 @@ func advance(map: GWJ30_Map, player: GWJ30_Player, enemy) -> GWJ30_EnemyState:
 		# Don't attack player if he has a candle
 		return GWJ30_EnemyState_Follow.new()
 	var path := map.get_point_path(enemy.position, player.position)
-	if len(path) > 0:
+	assert(len(path) > 0, "No path found!")
+	if len(path) > 1:
 		enemy.position = path[1]
-	else:
-		assert(false, "No path found!")
 	return self

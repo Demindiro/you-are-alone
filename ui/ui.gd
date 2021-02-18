@@ -21,13 +21,20 @@ export var light_candle_button_path := NodePath()
 onready var light_candle_button: BaseButton = get_node(light_candle_button_path)
 
 export var game_over_path := NodePath()
+export var game_won_path := NodePath()
 onready var game_over: Control = get_node(game_over_path)
+onready var game_won: Control = get_node(game_won_path)
+
+export var puzzle_path := NodePath()
+onready var puzzle: Control = get_node(puzzle_path)
 
 
 func _ready() -> void:
 	var e := player.connect("move", self, "move")
 	assert(e == OK)
 	e = player.connect("open_inventory", self, "open_inventory")
+	assert(e == OK)
+	e = player.connect("open_puzzle", self, "open_puzzle")
 	assert(e == OK)
 	e = player.connect("took_item", self, "took_item")
 	assert(e == OK)
@@ -49,11 +56,16 @@ func _ready() -> void:
 
 func move() -> void:
 	clear_children(chest_inventory)
+	clear_children(puzzle)
 	_refresh_actions()
 
 
 func open_inventory() -> void:
 	_refresh_inventory()
+
+
+func open_puzzle() -> void:
+	_refresh_puzzle()
 
 
 func took_item(_item) -> void:
@@ -75,6 +87,10 @@ func put_item(item):
 
 func game_over() -> void:
 	game_over.visible = true
+
+
+func escaped() -> void:
+	game_won.visible = true
 
 
 func _refresh_inventory() -> void:
@@ -119,6 +135,12 @@ func _refresh_actions() -> void:
 		if b.disabled:
 			b.call_deferred("release_focus")
 	_refresh_light_candle_button()
+
+
+func _refresh_puzzle() -> void:
+	if player.puzzle != null:
+		var node: Control = player.puzzle.get_ui()
+		puzzle.add_child(node)
 
 
 func _refresh_light_candle_button() -> void:

@@ -18,7 +18,6 @@ scale = Vector2( 64, 64 )
 script = ExtResource( 1 )
 
 [node name="Enemy" parent="World" instance=ExtResource( 4 )]
-z_index = 10
 player_path = NodePath("../Player")
 
 [node name="Player" parent="World" instance=ExtResource( 2 )]
@@ -32,4 +31,5 @@ move_up_button_path = NodePath("../../Default scenario/UI/Actions/Up")
 move_down_button_path = NodePath("../../Default scenario/UI/Actions/Down")
 light_candle_button_path = NodePath("../../Default scenario/UI/Light candle")
 [connection signal="done" from="World/Map generator" to="." method="set_map"]
+[connection signal="escaped" from="World/Player" to="UI" method="escaped"]
 [connection signal="killed" from="World/Player" to="UI" method="game_over"]

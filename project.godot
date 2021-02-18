@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://tiles/action_result.gd"
 }, {
 "base": "GWJ30_TileActionResult",
+"class": "GWJ30_TileActionResult_Escaped",
+"language": "GDScript",
+"path": "res://player/action_result_escaped.gd"
+}, {
+"base": "GWJ30_TileActionResult",
 "class": "GWJ30_TileActionResult_Inventory",
 "language": "GDScript",
 "path": "res://tiles/action_result_inventory.gd"
@@ -93,6 +98,11 @@ _global_script_classes=[ {
 "class": "GWJ30_TileActionResult_None",
 "language": "GDScript",
 "path": "res://tiles/action_result_none.gd"
+}, {
+"base": "GWJ30_TileActionResult",
+"class": "GWJ30_TileActionResult_Puzzle",
+"language": "GDScript",
+"path": "res://puzzles/puzzle_result.gd"
 }, {
 "base": "GWJ30_TileAction_Inventory",
 "class": "GWJ30_TileAction_Chest",
@@ -108,6 +118,16 @@ _global_script_classes=[ {
 "class": "GWJ30_TileAction_Inventory",
 "language": "GDScript",
 "path": "res://tiles/tile_action_inventory.gd"
+}, {
+"base": "GWJ30_TileAction",
+"class": "GWJ30_TileAction_Puzzle",
+"language": "GDScript",
+"path": "res://puzzles/puzzle.gd"
+}, {
+"base": "GWJ30_TileAction_Puzzle",
+"class": "GWJ30_TileAction_Puzzle_Door",
+"language": "GDScript",
+"path": "res://puzzles/door/door.gd"
 }, {
 "base": "GWJ30_TileAction_Inventory",
 "class": "GWJ30_TileAction_Table",
@@ -135,11 +155,15 @@ _global_script_class_icons={
 "GWJ30_TileAction": "",
 "GWJ30_TileActionList": "",
 "GWJ30_TileActionResult": "",
+"GWJ30_TileActionResult_Escaped": "",
 "GWJ30_TileActionResult_Inventory": "",
 "GWJ30_TileActionResult_None": "",
+"GWJ30_TileActionResult_Puzzle": "",
 "GWJ30_TileAction_Chest": "",
 "GWJ30_TileAction_Floor": "",
 "GWJ30_TileAction_Inventory": "",
+"GWJ30_TileAction_Puzzle": "",
+"GWJ30_TileAction_Puzzle_Door": "",
 "GWJ30_TileAction_Table": "",
 "GWJ30_TileAction_Wall": ""
 }
