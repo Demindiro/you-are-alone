@@ -57,4 +57,5 @@ func _check_kill() -> void:
 
 func player_escaped() -> void:
 	stop_beat_animation.play("fade_out")
+	state = GWJ30_EnemyState_Idle.new()
 	player.disconnect("move", self, "call_deferred")
