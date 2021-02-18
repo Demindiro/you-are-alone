@@ -144,6 +144,10 @@ func _ready() -> void:
 		puzzle_item_count += len(items)
 	# Place items in inventories
 	if puzzle_item_count > len(puzzle_inventories):
+		# Just try again, I can't be bothered
+		print("TODO handle potentally too low inv space properly")
+		get_tree().reload_current()
+		return
 		assert(false, "TODO")
 	else:
 		# There are plenty of free inventories, place wherever
