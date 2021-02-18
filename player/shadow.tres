@@ -9,7 +9,7 @@ uniform float shadow_radius = 1.0;
 void fragment() {
 	vec2 uv = abs(UV - vec2(0.5)) * 2.0;
 	COLOR.rgb = vec3(0.0);
-	COLOR.a = clamp(length(uv) / shadow_radius, 0.0, 1.0);
+	COLOR.a = clamp(sqrt(length(uv) / shadow_radius), 0.5, 1.0);
 }"
 
 [resource]
