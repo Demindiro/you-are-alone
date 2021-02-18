@@ -167,6 +167,20 @@ func _ready() -> void:
 			if _place_item_in_inv(inventories[randi() % len(inventories)], "Candle"):
 				break
 
+	# Fill empty tiles and add border with walls to prevent ugly background from being visible
+	var map_aabb := get_used_rect()
+	print(map_aabb)
+	for x in range(map_aabb.position.x, map_aabb.end.x):
+		for y in range(map_aabb.position.y, map_aabb.end.y):
+			if get_cell(x, y) == -1:
+				set_cell(x, y, WALL_ID)
+	for x in range(map_aabb.position.x - 1, map_aabb.end.x + 1):
+		set_cell(x, map_aabb.position.y - 1, WALL_ID)
+		set_cell(x, map_aabb.position.y + map_aabb.size.y, WALL_ID)
+	for y in range(map_aabb.position.y, map_aabb.end.y):
+		set_cell(map_aabb.position.x - 1, y, WALL_ID)
+		set_cell(map_aabb.position.x + map_aabb.size.x, y, WALL_ID)
+
 	if DEBUG:
 		for key in actions:
 			var pos := Vector2(key[0], key[1])
