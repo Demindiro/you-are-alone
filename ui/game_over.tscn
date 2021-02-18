@@ -4,11 +4,11 @@
 [ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ui/game_over.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 128
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate:a")
@@ -24,7 +24,6 @@ tracks/0/keys = {
 }
 
 [node name="Game over" type="ColorRect"]
-modulate = Color( 1, 1, 1, 0.0335938 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -47,7 +46,7 @@ margin_bottom = 212.0
 [node name="Label" type="Label" parent="Box/Box"]
 margin_right = 126.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "You died"
 align = 1
 
@@ -68,7 +67,7 @@ shortcut_in_tooltip = false
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 3 )
+anims/fade_in = SubResource( 2 )
 [connection signal="visibility_changed" from="." to="AnimationPlayer" method="play" binds= [ "fade_in" ]]
 [connection signal="pressed" from="Box/Box/Try again" to="." method="restart"]
 [connection signal="pressed" from="Box/Box/Exit" to="." method="exit"]

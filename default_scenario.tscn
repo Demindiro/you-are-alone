@@ -32,4 +32,5 @@ move_down_button_path = NodePath("../../Default scenario/UI/Actions/Down")
 light_candle_button_path = NodePath("../../Default scenario/UI/Light candle")
 [connection signal="done" from="World/Map generator" to="." method="set_map"]
 [connection signal="escaped" from="World/Player" to="UI" method="escaped"]
+[connection signal="escaped" from="World/Player" to="World/Enemy" method="player_escaped"]
 [connection signal="killed" from="World/Player" to="UI" method="game_over"]

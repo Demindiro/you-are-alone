@@ -6,10 +6,12 @@ export var map_path := NodePath()
 export var player_path := NodePath()
 export var heartbeat_sound_path := NodePath()
 export var kill_sound_path := NodePath()
+export var stop_beat_animation_path := NodePath()
 onready var map: GWJ30_Map = get_node_or_null(map_path)
 onready var player: GWJ30_Player = get_node(player_path)
 onready var heartbeat_sound: AudioStreamPlayer2D = get_node(heartbeat_sound_path)
 onready var kill_sound: AudioStreamPlayer2D = get_node(kill_sound_path)
+onready var stop_beat_animation: AnimationPlayer = get_node(stop_beat_animation_path)
 
 var state: GWJ30_EnemyState = GWJ30_EnemyState_Teleport.new()
 var move_counter := 0
@@ -51,3 +53,7 @@ func _check_kill() -> void:
 		player.kill()
 		kill_sound.play()
 		heartbeat_sound.stop()
+
+
+func player_escaped() -> void:
+	stop_beat_animation.play("fade_out")
