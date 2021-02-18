@@ -18,7 +18,6 @@ scale = Vector2( 64, 64 )
 script = ExtResource( 1 )
 
 [node name="Enemy" parent="World" instance=ExtResource( 4 )]
-map_path = null
 player_path = NodePath("../Player")
 
 [node name="Player" parent="World" instance=ExtResource( 2 )]

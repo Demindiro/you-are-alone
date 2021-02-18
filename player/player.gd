@@ -14,6 +14,9 @@ signal escaped
 
 const REILLUMINATE_THRESHOLD := 30
 
+export var sprite_path := NodePath()
+onready var sprite: AnimatedSprite = get_node(sprite_path)
+
 export var map_path := NodePath()
 #onready var map: GWJ30_Map = get_node(map_path)
 onready var map = get_node_or_null(map_path)
@@ -39,6 +42,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_interpolation_fraction = min(1.0, _interpolation_fraction + delta * 5.0)
+	if _interpolation_fraction == 1.0:
+		sprite.play("idle")
+	elif global_position != _old_position:
+		sprite.play("walking")
 	_visual.position = _old_position.linear_interpolate(global_position, ease(_interpolation_fraction, -1.75))
 
 
@@ -49,10 +56,12 @@ func teleport(p_position: Vector2) -> void:
 
 
 func move_left() -> void:
+	sprite.flip_h = false
 	_move(Vector2.LEFT)
 
 
 func move_right() -> void:
+	sprite.flip_h = true
 	_move(Vector2.RIGHT)
 
 
