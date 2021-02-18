@@ -15,6 +15,17 @@ const TILE_TO_ACTION_MAP := {
 	WALL_ID: GWJ30_TileAction_Wall,
 	FLOOR_ID: GWJ30_TileAction_Floor,
 	DOOR_ID: GWJ30_TileAction_Puzzle_Door,
+
+	3: GWJ30_TileAction_Wall,
+	4: GWJ30_TileAction_Wall,
+	5: GWJ30_TileAction_Wall,
+	6: GWJ30_TileAction_Wall,
+	7: GWJ30_TileAction_Wall,
+	8: GWJ30_TileAction_Wall,
+	9: GWJ30_TileAction_Wall,
+	10: GWJ30_TileAction_Wall,
+	11: GWJ30_TileAction_Wall,
+
 	12: GWJ30_TileAction_Chest,
 	13: GWJ30_TileAction_Wall,
 	14: GWJ30_TileAction_Table,

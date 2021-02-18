@@ -23,7 +23,7 @@ const TILES := {
 	preload("dining_room/dining_room.tres"): 0.5,
 	preload("storage_room/storage_room.tres"): 0.75,
 	preload("library/library.tres"): 0.25,
-	#preload("fountain/fountain.tres"): 0.5
+	preload("fountain/fountain.tres"): 0.5
 }
 #const TILES_PER_MAP := 256
 const TILES_PER_MAP := 32
