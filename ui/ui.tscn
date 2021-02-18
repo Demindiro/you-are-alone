@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/arrow_up-x3.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=6]
 [ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=7]
 [ext_resource path="res://ui/game_over.tscn" type="PackedScene" id=8]
-[ext_resource path="res://puzzles/door/ui.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/game_won.tscn" type="PackedScene" id=10]
 
 [sub_resource type="InputEventAction" id=1]
@@ -180,8 +179,6 @@ rect_min_size = Vector2( 300, 200 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextureRect" parent="Puzzle" instance=ExtResource( 9 )]
 
 [node name="Game over" parent="." instance=ExtResource( 8 )]
 visible = false
