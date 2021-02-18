@@ -120,6 +120,11 @@ _global_script_classes=[ {
 "path": "res://tiles/tile_action_inventory.gd"
 }, {
 "base": "GWJ30_TileAction",
+"class": "GWJ30_TileAction_None",
+"language": "GDScript",
+"path": "res://tiles/action_none.gd"
+}, {
+"base": "GWJ30_TileAction",
 "class": "GWJ30_TileAction_Puzzle",
 "language": "GDScript",
 "path": "res://puzzles/puzzle.gd"
@@ -162,6 +167,7 @@ _global_script_class_icons={
 "GWJ30_TileAction_Chest": "",
 "GWJ30_TileAction_Floor": "",
 "GWJ30_TileAction_Inventory": "",
+"GWJ30_TileAction_None": "",
 "GWJ30_TileAction_Puzzle": "",
 "GWJ30_TileAction_Puzzle_Door": "",
 "GWJ30_TileAction_Table": "",

@@ -57,3 +57,4 @@ func _check_kill() -> void:
 
 func player_escaped() -> void:
 	stop_beat_animation.play("fade_out")
+	player.disconnect("move", self, "call_deferred")

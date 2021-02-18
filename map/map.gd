@@ -179,7 +179,7 @@ func get_actions(player: GWJ30_Player) -> GWJ30_TileActionList:
 	for dir in [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]:
 		var pos: Vector2 = player.position - position + dir
 		var key := PoolIntArray([pos.x, pos.y])
-		acts.push_back(actions[key])
+		acts.push_back(actions.get(key, GWJ30_TileAction_None.new()))
 	var list := GWJ30_TileActionList.new()
 	list.left = acts[0]
 	list.right = acts[1]

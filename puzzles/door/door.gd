@@ -31,16 +31,14 @@ var puzzle := Puzzle.new()
 
 func _init() -> void:
 	name = "Door"
-	puzzle.key = "Key " + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[_COUNTER[0]]
-	_COUNTER[0] += 1
-	# I assume no more than 26 keys will be in circulation at once...
-	_COUNTER[0] %= 26
+	puzzle.key = "Key"
 
 func get_necessary_items() -> PoolStringArray:
 	return PoolStringArray([puzzle.key])
 
 func do(player: GWJ30_Player) -> GWJ30_TileActionResult:
 	if puzzle.solved:
+		player.position = position
 		return GWJ30_TileActionResult_Escaped.new()
 	else:
 		puzzle.map = map # TODO hacky
