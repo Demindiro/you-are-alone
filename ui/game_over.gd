@@ -7,4 +7,4 @@ func restart() -> void:
 
 
 func exit() -> void:
-	pass # TODO goto main menu
+	get_tree().change_scene("res://main_menu.tscn")

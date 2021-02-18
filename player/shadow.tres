@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float shadow_radius = 1.0;
+
+void fragment() {
+	vec2 uv = abs(UV - vec2(0.5)) * 2.0;
+	COLOR.rgb = vec3(0.0);
+	COLOR.a = clamp(length(uv) / shadow_radius, 0.0, 1.0);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/shadow_radius = 1.0
