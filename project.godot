@@ -177,6 +177,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj30"
+run/main_scene="res://main_menu.tscn"
 config/icon="res://icon.png"
 
 [display]
