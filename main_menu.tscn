@@ -16,6 +16,7 @@ font_data = ExtResource( 6 )
 
 [node name="Main menu" type="Node"]
 script = ExtResource( 5 )
+shadow_path = NodePath("Node2D/Node2D/Shadow")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

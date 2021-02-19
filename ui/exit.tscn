@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/exit.gd" type="Script" id=2]
+
+[node name="Exit" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="PanelContainer" parent="."]
+margin_left = 387.0
+margin_top = 238.0
+margin_right = 637.0
+margin_bottom = 362.0
+
+[node name="Box" type="VBoxContainer" parent="Box"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 241.0
+margin_bottom = 115.0
+
+[node name="Label" type="Label" parent="Box/Box"]
+margin_right = 232.0
+margin_bottom = 42.0
+text = "Are you sure you want to exit?"
+
+[node name="Box" type="HBoxContainer" parent="Box/Box"]
+margin_top = 46.0
+margin_right = 232.0
+margin_bottom = 106.0
+alignment = 1
+
+[node name="No" type="Button" parent="Box/Box/Box"]
+margin_right = 114.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+text = "No"
+
+[node name="Yes" type="Button" parent="Box/Box/Box"]
+margin_left = 118.0
+margin_right = 232.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+text = "Yes"
+[connection signal="pressed" from="Box/Box/Box/No" to="." method="cancel"]
+[connection signal="pressed" from="Box/Box/Box/Yes" to="." method="exit"]
