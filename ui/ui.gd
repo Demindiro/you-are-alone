@@ -99,6 +99,7 @@ func _refresh_inventory() -> void:
 	clear_children(chest_inventory)
 	for e in player.items:
 		var btn := Button.new()
+		btn.focus_mode = Control.FOCUS_NONE
 		if e == null:
 			e = ""
 			btn.disabled = true
@@ -109,6 +110,7 @@ func _refresh_inventory() -> void:
 		self_inventory.add_child(btn)
 	for e in player.open_inventory_items:
 		var btn := Button.new()
+		btn.focus_mode = Control.FOCUS_NONE
 		if e == null:
 			e = ""
 			btn.disabled = true
