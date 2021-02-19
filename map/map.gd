@@ -9,10 +9,11 @@ const CANDLES := 5
 
 const WALL_ID := 0
 const FLOOR_ID := 1
-const DOOR_ID := 2
 
+const DOOR_ID := 2
 const JESUS_ID := 15
 const PIANO_ID := 16
+const SAFE_ID := 17
 
 const TILE_TO_ACTION_MAP := {
 	WALL_ID: GWJ30_TileAction_Wall,
@@ -37,6 +38,7 @@ const TILE_TO_ACTION_MAP := {
 const PUZZLES := {
 	GWJ30_TileAction_Puzzle_Jesus: JESUS_ID,
 	GWJ30_TileAction_Puzzle_Piano: PIANO_ID,
+	GWJ30_TileAction_Puzzle_Safe: SAFE_ID,
 }
 
 var actions := {}
@@ -100,7 +102,7 @@ func _ready() -> void:
 	inventory_positions_shuffled.shuffle()
 	var puzzles_shuffled := PUZZLES.keys()
 	puzzles_shuffled.shuffle()
-	for i in 2:
+	for i in 3:
 		var key: PoolIntArray = inventory_positions_shuffled.pop_back()
 		var pzl = puzzles_shuffled.pop_back()
 		actions[key] = pzl.new()

@@ -144,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://puzzles/piano/puzzle.gd"
 }, {
+"base": "GWJ30_TileAction_Puzzle",
+"class": "GWJ30_TileAction_Puzzle_Safe",
+"language": "GDScript",
+"path": "res://puzzles/safe/puzzle.gd"
+}, {
 "base": "GWJ30_TileAction_Inventory",
 "class": "GWJ30_TileAction_Table",
 "language": "GDScript",
@@ -182,6 +187,7 @@ _global_script_class_icons={
 "GWJ30_TileAction_Puzzle_Door": "",
 "GWJ30_TileAction_Puzzle_Jesus": "",
 "GWJ30_TileAction_Puzzle_Piano": "",
+"GWJ30_TileAction_Puzzle_Safe": "",
 "GWJ30_TileAction_Table": "",
 "GWJ30_TileAction_Wall": ""
 }

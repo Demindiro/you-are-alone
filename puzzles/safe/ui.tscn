@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=2]
+[ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=3]
+[ext_resource path="res://ui/font/AfternoonRegular-Wy0DG.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://puzzles/safe/ui.gd" type="Script" id=5]
+[ext_resource path="res://ui/click_sound.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+font_data = ExtResource( 4 )
+
+[node name="Safe" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+value_path = NodePath("Dial/Value")
+solution_path = NodePath("Solution")
+
+[node name="Dial" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 40.0
+grow_horizontal = 2
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="Dial"]
+margin_right = 30.0
+margin_bottom = 84.0
+focus_mode = 0
+icon = ExtResource( 2 )
+
+[node name="Value" type="Label" parent="Dial"]
+margin_left = 38.0
+margin_right = 60.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 1 )
+text = " 0"
+
+[node name="Right" type="Button" parent="Dial"]
+margin_left = 68.0
+margin_right = 98.0
+margin_bottom = 84.0
+focus_mode = 0
+icon = ExtResource( 3 )
+
+[node name="Solution" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -40.0
+margin_right = -40.0
+margin_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Click sound" parent="." instance=ExtResource( 6 )]
+[connection signal="pressed" from="Dial/Left" to="Click sound" method="play"]
+[connection signal="pressed" from="Dial/Left" to="." method="decrease"]
+[connection signal="pressed" from="Dial/Right" to="Click sound" method="play"]
+[connection signal="pressed" from="Dial/Right" to="." method="increase"]

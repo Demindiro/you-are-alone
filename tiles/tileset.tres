@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=2]
+[gd_resource type="TileSet" load_steps=11 format=2]
 
 [ext_resource path="res://tiles/wall.png" type="Texture" id=1]
 [ext_resource path="res://tiles/floor.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://tiles/table.png" type="Texture" id=7]
 [ext_resource path="res://tiles/jesus.png" type="Texture" id=8]
 [ext_resource path="res://tiles/piano.png" type="Texture" id=9]
+[ext_resource path="res://tiles/safe.png" type="Texture" id=10]
 
 [resource]
 0/name = "wall.png 0"
@@ -249,3 +250,17 @@
 16/shape_one_way_margin = 0.0
 16/shapes = [  ]
 16/z_index = 0
+17/name = "safe.png 17"
+17/texture = ExtResource( 10 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 16, 16 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
