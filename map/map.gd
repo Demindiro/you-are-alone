@@ -182,9 +182,20 @@ func _ready() -> void:
 		assert(false, "TODO")
 	else:
 		# There are plenty of free inventories, place wherever
+		var pzl_inv_i := 1
 		for pzl_items in puzzle_items:
 			var used_invs := []
+			# Place at least one item in another puzzle if possible
+			var placed_one := false
 			for it in pzl_items:
+				if pzl_inv_i < len(puzzles):
+					placed_one = _place_item_in_inv(puzzles[pzl_inv_i].items, it)
+				break
+			pzl_inv_i += 1
+			for it in pzl_items:
+				if placed_one:
+					placed_one = false
+					continue
 				# Keep trying, we must place the item
 				# Also, this shouldn't get stuck indefinitely anyways
 				while true:
