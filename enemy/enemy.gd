@@ -26,8 +26,12 @@ func _ready() -> void:
 func _post_ready() -> void:
 	# Move once already (teleport in this case)
 	state = state.advance(map, player, self)
-	# Start playing audio now to prevent the player from hearing one beat
+
+
+func _process(_delta: float) -> void:
+	# Start playing one frame later to prevent audible beat before teleport
 	heartbeat_sound.play()
+	set_process(false)
 
 
 func move() -> void:
