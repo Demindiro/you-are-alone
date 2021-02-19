@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 
+export var click_sound_path := NodePath()
+onready var click_sound = get_node(click_sound_path)
+
 export var player_path := NodePath()
 export var chest_inventory_path := NodePath()
 export var self_inventory_path := NodePath()
@@ -107,6 +110,8 @@ func _refresh_inventory() -> void:
 		btn.text = e
 		var err := btn.connect("pressed", self, "put_item", [e])
 		assert(err == OK)
+		err = btn.connect("pressed", click_sound, "play")
+		assert(err == OK)
 		self_inventory.add_child(btn)
 	for e in player.open_inventory_items:
 		var btn := Button.new()
@@ -117,6 +122,8 @@ func _refresh_inventory() -> void:
 		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
 		var err := btn.connect("pressed", self, "take_item", [e])
+		assert(err == OK)
+		err = btn.connect("pressed", click_sound, "play")
 		assert(err == OK)
 		chest_inventory.add_child(btn)
 	_refresh_light_candle_button()

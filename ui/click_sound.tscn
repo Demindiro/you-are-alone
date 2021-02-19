@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/257958__fillsoko__light-switch-on-off_1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://ui/257958__fillsoko__light-switch-on-off_2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://ui/click_sound.gd" type="Script" id=3]
+[ext_resource path="res://ui/257958__fillsoko__light-switch-on-off_0.ogg" type="AudioStream" id=4]
+[ext_resource path="res://ui/257958__fillsoko__light-switch-on-off_3.ogg" type="AudioStream" id=5]
+
+[node name="Click sound" type="Node"]
+script = ExtResource( 3 )
+
+[node name="A" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="B" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+
+[node name="C" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0

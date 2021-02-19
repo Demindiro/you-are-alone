@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/257958__fillsoko__light-switch-on-off_1.ogg-0132c074d12882fe592ec2cfadb97941.oggstr"
+
+[deps]
+
+source_file="res://ui/257958__fillsoko__light-switch-on-off_1.ogg"
+dest_files=[ "res://.import/257958__fillsoko__light-switch-on-off_1.ogg-0132c074d12882fe592ec2cfadb97941.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/arrow_up-x3.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/arrow_right-x3.png" type="Texture" id=6]
 [ext_resource path="res://ui/arrow_left-x3.png" type="Texture" id=7]
 [ext_resource path="res://ui/game_over.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/click_sound.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/game_won.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
@@ -16,6 +17,7 @@ font_data = ExtResource( 5 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 3 )
+click_sound_path = NodePath("Click sound")
 player_path = NodePath("../World/Player")
 chest_inventory_path = NodePath("Chest inventory")
 self_inventory_path = NodePath("Self inventory")
@@ -159,3 +161,6 @@ modulate = Color( 1, 1, 1, 0.190799 )
 
 [node name="Game won" parent="." instance=ExtResource( 10 )]
 visible = false
+
+[node name="Click sound" parent="." instance=ExtResource( 9 )]
+[connection signal="pressed" from="Light candle" to="Click sound" method="play"]
