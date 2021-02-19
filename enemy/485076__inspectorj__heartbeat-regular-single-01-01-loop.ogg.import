@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/485076__inspectorj__heartbeat-regular-single-01-01-loop.ogg-8c425324929322e3953dcd40862d03ab.oggstr"
+
+[deps]
+
+source_file="res://enemy/485076__inspectorj__heartbeat-regular-single-01-01-loop.ogg"
+dest_files=[ "res://.import/485076__inspectorj__heartbeat-regular-single-01-01-loop.ogg-8c425324929322e3953dcd40862d03ab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
