@@ -105,8 +105,21 @@ func kill() -> void:
 	emit_signal("killed")
 
 
-func _move(direction: Vector2) -> void:
+func _puzzle_solved() -> void:
+	var result: GWJ30_TileActionResult = puzzle.do(self)
+	_clear_state()
+	_parse_result(result)
+
+
+func _clear_state() -> void:
+	if puzzle != null:
+		puzzle.disconnect("solved", self, "_puzzle_solved")
+	puzzle = null
 	open_inventory_items = []
+
+
+func _move(direction: Vector2) -> void:
+	_clear_state()
 	_old_position = global_position
 	var result: GWJ30_TileActionResult = map.do_action(self, direction)
 	if result == null:
@@ -116,6 +129,10 @@ func _move(direction: Vector2) -> void:
 		_update_shadow()
 	_interpolation_fraction = 0.0
 	emit_signal("move")
+	_parse_result(result)
+
+
+func _parse_result(result: GWJ30_TileActionResult) -> void:
 	if result is GWJ30_TileActionResult_None:
 		pass
 	elif result is GWJ30_TileActionResult_Inventory:
@@ -123,6 +140,8 @@ func _move(direction: Vector2) -> void:
 		emit_signal("open_inventory")
 	elif result is GWJ30_TileActionResult_Puzzle:
 		puzzle = result
+		var e: int = puzzle.connect("solved", self, "_puzzle_solved")
+		assert(e == OK)
 		emit_signal("open_puzzle")
 	elif result is GWJ30_TileActionResult_Escaped:
 		emit_signal("escaped")

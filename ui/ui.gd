@@ -58,6 +58,7 @@ func move() -> void:
 	clear_children(chest_inventory)
 	clear_children(puzzle)
 	_refresh_actions()
+	_refresh_puzzle()
 
 
 func open_inventory() -> void:
@@ -117,6 +118,7 @@ func _refresh_inventory() -> void:
 		assert(err == OK)
 		chest_inventory.add_child(btn)
 	_refresh_light_candle_button()
+	_refresh_puzzle()
 
 
 func _refresh_actions() -> void:
@@ -135,9 +137,11 @@ func _refresh_actions() -> void:
 		if b.disabled:
 			b.call_deferred("release_focus")
 	_refresh_light_candle_button()
+	_refresh_puzzle()
 
 
 func _refresh_puzzle() -> void:
+	clear_children(puzzle)
 	if player.puzzle != null:
 		var node: Control = player.puzzle.get_ui()
 		puzzle.add_child(node)

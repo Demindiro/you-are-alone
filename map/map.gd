@@ -11,6 +11,8 @@ const WALL_ID := 0
 const FLOOR_ID := 1
 const DOOR_ID := 2
 
+const JESUS_ID := 15
+
 const TILE_TO_ACTION_MAP := {
 	WALL_ID: GWJ30_TileAction_Wall,
 	FLOOR_ID: GWJ30_TileAction_Floor,
@@ -31,6 +33,10 @@ const TILE_TO_ACTION_MAP := {
 	14: GWJ30_TileAction_Table,
 }
 
+const PUZZLES := {
+	GWJ30_TileAction_Puzzle_Jesus: JESUS_ID
+}
+
 var actions := {}
 var cells := {}
 var astar := AStar.new()
@@ -47,6 +53,8 @@ func _ready() -> void:
 	var free_inventory_slots := 0
 	var puzzles := []
 
+	# Merge rooms
+	var inventory_positions := []
 	for child in get_children():
 		var room: GWJ30_Room = child
 		var room_aabb = room.get_used_rect()
@@ -76,12 +84,35 @@ func _ready() -> void:
 						floor_tiles.append(key)
 					set_cell(key[0], key[1], cell)
 					if actions[key] is GWJ30_TileAction_Inventory:
-						inventories.push_back(actions[key].items)
+						#inventories.push_back(actions[key].items)
+						inventory_positions.push_back(key)
 		room.queue_free()
 
-	var wall_gaps := PoolVector2Array()
+	# Retry if there are not enough free inventories
+	if len(inventory_positions) < 1:
+		get_tree().reload_current_scene()
+		return
+
+	# Replace some inventories with puzzles (which are also inventories)
+	var inventory_positions_shuffled := inventory_positions.duplicate()
+	inventory_positions_shuffled.shuffle()
+	var puzzles_shuffled := PUZZLES.keys()
+	puzzles_shuffled.shuffle()
+	for i in 1:
+		var key: PoolIntArray = inventory_positions.pop_back()
+		var pzl = puzzles_shuffled.pop_back()
+		actions[key] = pzl.new()
+		actions[key].position = Vector2(key[0], key[1])
+		actions[key].map = self
+		puzzles.push_back(actions[key])
+		set_cell(key[0], key[1], PUZZLES[pzl])
+
+	# Collect inventory arrays
+	for key in inventory_positions:
+		inventories.push_back(actions[key].items)
 
 	# Close off any potential gaps
+	var wall_gaps := PoolVector2Array()
 	for floor_pos in floor_tiles:
 		var pos := Vector2(floor_pos[0], floor_pos[1])
 		var key: PoolIntArray = floor_pos
@@ -146,7 +177,7 @@ func _ready() -> void:
 	if puzzle_item_count > len(puzzle_inventories):
 		# Just try again, I can't be bothered
 		print("TODO handle potentally too low inv space properly")
-		get_tree().reload_current()
+		get_tree().reload_current_scene()
 		return
 		assert(false, "TODO")
 	else:

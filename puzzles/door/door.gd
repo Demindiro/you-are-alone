@@ -17,6 +17,8 @@ class Puzzle:
 			var node: Node2D = preload("light.tscn").instance()
 			map.add_child(node)
 			node.position = position * 16 # TODO don't hardcode this
+			# Don't emit a signal so the player has to step through the door manually
+			# That's extra dramatic & stuff
 			return true
 		return false
 
@@ -26,15 +28,22 @@ class Puzzle:
 		else:
 			return preload("ui.tscn").instance() as Control # godot pls
 
+	func is_solved() -> bool:
+		return solved
+
 const _COUNTER := [0]
 var puzzle := Puzzle.new()
 
 func _init() -> void:
 	name = "Door"
 	puzzle.key = "Key"
+	puzzle.owner = weakref(self)
 
 func get_necessary_items() -> PoolStringArray:
 	return PoolStringArray([puzzle.key])
+
+func is_solved() -> bool:
+	return puzzle.solved
 
 func do(player: GWJ30_Player) -> GWJ30_TileActionResult:
 	if puzzle.solved:
