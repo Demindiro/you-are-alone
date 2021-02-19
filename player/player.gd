@@ -13,9 +13,12 @@ signal escaped
 
 
 const REILLUMINATE_THRESHOLD := 30
+const INTERPOLATION_FACTOR := 5.0
 
 export var sprite_path := NodePath()
+export var audio_path := NodePath()
 onready var sprite: AnimatedSprite = get_node(sprite_path)
+onready var audio: AudioStreamPlayer2D = get_node(audio_path)
 
 export var map_path := NodePath()
 #onready var map: GWJ30_Map = get_node(map_path)
@@ -31,6 +34,7 @@ var illuminated := 0
 
 var _interpolation_fraction := 0.0
 var _old_position := Vector2()
+var _audio_pos := 0.0
 
 
 func _ready() -> void:
@@ -41,11 +45,16 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_interpolation_fraction = min(1.0, _interpolation_fraction + delta * 5.0)
+	_interpolation_fraction = min(1.0, _interpolation_fraction + delta * INTERPOLATION_FACTOR)
 	if _interpolation_fraction == 1.0:
 		sprite.play("idle")
+		if audio.is_playing():
+			_audio_pos = audio.get_playback_position()
+		audio.stop()
 	elif global_position != _old_position:
 		sprite.play("walking")
+		if not audio.is_playing():
+			audio.play(_audio_pos)
 	_visual.position = _old_position.linear_interpolate(global_position, ease(_interpolation_fraction, -1.75))
 
 
