@@ -22,6 +22,7 @@ const TILES := {
 
 	preload("dining_room/dining_room.tres"): 0.5,
 	preload("storage_room/storage_room.tres"): 0.75,
+	preload("storage_room/stray_chest.tres"): 0.25,
 	preload("library/library.tres"): 0.25,
 	preload("fountain/fountain.tres"): 0.5
 }
