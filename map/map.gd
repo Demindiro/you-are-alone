@@ -96,7 +96,7 @@ func _ready() -> void:
 		room.queue_free()
 
 	# Retry if there are not enough free inventories
-	if len(inventory_positions) < 1:
+	if len(inventory_positions) < 3:
 		print("Not enough inventories, aborting")
 		get_tree().reload_current_scene()
 		return
