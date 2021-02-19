@@ -47,6 +47,9 @@ var astar := AStar.new()
 var nav_points := PoolVector2Array()
 
 
+var valid := false
+
+
 func _ready() -> void:
 	cell_size = Vector2(CELL_SIZE, CELL_SIZE)
 	tile_set = preload("res://tiles/tileset.tres")
@@ -94,6 +97,7 @@ func _ready() -> void:
 
 	# Retry if there are not enough free inventories
 	if len(inventory_positions) < 1:
+		print("Not enough inventories, aborting")
 		get_tree().reload_current_scene()
 		return
 
@@ -242,6 +246,8 @@ func _ready() -> void:
 			lbl.rect_scale = Vector2.ONE / 4.0
 			add_child(lbl)
 
+	valid = true
+
 
 func do_action(player: GWJ30_Player, direction: Vector2) -> GWJ30_TileActionResult:
 	var pos := player.position - position + direction
@@ -275,6 +281,8 @@ func get_point_path(from: Vector2, to: Vector2) -> PoolVector2Array:
 
 
 func get_any_floor_point() -> Vector2:
+	if not valid:
+		return Vector2()
 	return nav_points[randi() % len(nav_points)]
 
 
