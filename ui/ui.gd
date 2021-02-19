@@ -108,6 +108,7 @@ func _refresh_inventory() -> void:
 			btn.disabled = true
 		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var err := btn.connect("pressed", self, "put_item", [e])
 		assert(err == OK)
 		err = btn.connect("pressed", click_sound, "play")
@@ -121,6 +122,7 @@ func _refresh_inventory() -> void:
 			btn.disabled = true
 		btn.rect_min_size = Vector2.ONE * 96
 		btn.text = e
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var err := btn.connect("pressed", self, "take_item", [e])
 		assert(err == OK)
 		err = btn.connect("pressed", click_sound, "play")

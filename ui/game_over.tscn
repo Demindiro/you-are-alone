@@ -55,6 +55,7 @@ margin_top = 88.0
 margin_right = 126.0
 margin_bottom = 148.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
 text = "Try   again"
 
@@ -63,6 +64,7 @@ margin_top = 152.0
 margin_right = 126.0
 margin_bottom = 212.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
 text = "Exit"
 

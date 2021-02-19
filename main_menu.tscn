@@ -72,6 +72,7 @@ __meta__ = {
 margin_right = 100.0
 margin_bottom = 60.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Play"
 
 [node name="Exit" type="Button" parent="Menu"]
@@ -79,6 +80,7 @@ margin_top = 64.0
 margin_right = 100.0
 margin_bottom = 124.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [node name="Title" type="Label" parent="."]

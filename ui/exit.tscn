@@ -38,6 +38,7 @@ alignment = 1
 [node name="No" type="Button" parent="Box/Box/Box"]
 margin_right = 114.0
 margin_bottom = 60.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 text = "No"
 
@@ -45,6 +46,7 @@ text = "No"
 margin_left = 118.0
 margin_right = 232.0
 margin_bottom = 60.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 text = "Yes"
 [connection signal="pressed" from="Box/Box/Box/No" to="." method="cancel"]

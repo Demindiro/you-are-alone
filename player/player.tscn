@@ -56,22 +56,22 @@ mesh = SubResource( 2 )
 
 [node name="Cover left" type="MeshInstance2D" parent="Visual"]
 material = SubResource( 4 )
-position = Vector2( -1040, -992 )
+position = Vector2( -1039, -992 )
 mesh = SubResource( 5 )
 
 [node name="Cover up" type="MeshInstance2D" parent="Visual"]
 material = SubResource( 4 )
-position = Vector2( 1000, -1040 )
+position = Vector2( 1000, -1039 )
 mesh = SubResource( 5 )
 
 [node name="Cover right" type="MeshInstance2D" parent="Visual"]
 material = SubResource( 4 )
-position = Vector2( 1056, 992 )
+position = Vector2( 1055, 992 )
 mesh = SubResource( 5 )
 
 [node name="Cover down" type="MeshInstance2D" parent="Visual"]
 material = SubResource( 4 )
-position = Vector2( -992, 1056 )
+position = Vector2( -992, 1055 )
 mesh = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="Visual"]

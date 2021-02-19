@@ -36,6 +36,7 @@ __meta__ = {
 margin_right = 30.0
 margin_bottom = 84.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 icon = ExtResource( 2 )
 
 [node name="Value" type="Label" parent="Dial"]
@@ -50,6 +51,7 @@ margin_left = 68.0
 margin_right = 98.0
 margin_bottom = 84.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 icon = ExtResource( 3 )
 
 [node name="Solution" type="HBoxContainer" parent="."]
