@@ -1,5 +1,6 @@
 file: ./player/389688__meggiepie__clothes-shuffling-near.ogg
 author: meggiepie
+license: CC0
 source: https://freesound.org/people/meggiepie/sounds/389688/
 
 file: ./ui/257958__fillsoko__light-switch-on-off_1.ogg
@@ -7,14 +8,22 @@ file: ./ui/257958__fillsoko__light-switch-on-off_2.ogg
 file: ./ui/257958__fillsoko__light-switch-on-off_3.ogg
 file: ./ui/257958__fillsoko__light-switch-on-off_4.ogg
 author: FillSoko
+license: CC0
 source: https://freesound.org/people/FillSoko/sounds/257958/
 
 file: ./enemy/485076__inspectorj__heartbeat-regular-single-01-01-loop.ogg
 author: InspectorJ
+license: CC-BY 3.0
 source: https://freesound.org/people/InspectorJ/sounds/485076/
 
 file: ./enemy/21915__halleck__neck-crack-pure.ogg
+license: CC-BY 3.0
 source: https://freesound.org/people/Halleck/sounds/21915/
 
 file: ./puzzles/piano/piano01.ogg
+license: GPL-2.0
 source: https://github.com/LMMS/lmms/blob/1534e90a39c99edefb49e4f8a4c7d7a0cadf37a3/data/samples/instruments/piano01.ogg
+
+file: ./ui/font/AfternoonRegular-Wy0DG.ttf
+license: CC-BY-SA 3.0
+source: https://fontstruct.com/fontstructions/show/126/afternoon
